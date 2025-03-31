@@ -50,4 +50,10 @@ def validate_license(email: str = Query(...), machine_id: str = Query(...)):
     if not is_active:
         raise HTTPException(status_code=403, detail="License inactive")
 
-    return { "status": "valid" }
+    if not machine_key_db:
+        # First time registration occurred
+        return { "status": "valid", "registered": True }
+
+    # Not first time
+    return { "status": "valid", "registered": False }
+

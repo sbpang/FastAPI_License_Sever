@@ -51,4 +51,12 @@ DELETE FROM users
 WHERE email = 'siubongpang@gmail.com';
 """
 
+## reset machine_key
+
+"""
+UPDATE users
+SET machine_key = NULL
+WHERE email = 'siubongpang@gmail.com';
+select * from users;
+"""
 
